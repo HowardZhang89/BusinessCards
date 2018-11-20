@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { DashboardService } from '../dashboard/dashboard.service';
+
 
 @Component({
   selector: 'app-history',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor() { }
+  searchHistory: any[];
+  
+  constructor(private dashboardService: DashboardService) { 
+    
+  }
 
   ngOnInit() {
+    this.getSearchHistory();
+  }
+
+  getSearchHistory(){
+    this.dashboardService.getSearchHistory().subscribe( (history: any) => {
+      this.searchHistory = history;
+    })
   }
 
 }

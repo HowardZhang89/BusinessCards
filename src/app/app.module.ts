@@ -14,9 +14,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import {FormsModule} from '@angular/forms';
 
 import { LoginService } from './login/login.service';
-import { AppRoutingModule } from './app-routing/app-routing.module';
-import { AuthGuard } from './login/auth.guard';
+import { AppRoutingModule } from './app-routing.module';
 
+import {AuthGuard} from './login/auth.guard';
+import { DashboardService } from './dashboard/dashboard.service';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { AuthGuard } from './login/auth.guard';
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    HistoryComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +33,9 @@ import { AuthGuard } from './login/auth.guard';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     FormsModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
-  providers: [LoginService, AuthGuard],
+  providers: [LoginService, AuthGuard, DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
