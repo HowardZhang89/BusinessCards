@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-//import { HistoryComponent } from './history/history.component';
+import { HistoryComponent } from './history/history.component';
 
 import { firebaseConfig } from '../environments/environment';
 
@@ -18,11 +18,13 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AuthGuard } from './login/auth.guard';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
