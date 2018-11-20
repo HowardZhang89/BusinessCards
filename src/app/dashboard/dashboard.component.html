@@ -1,21 +1,15 @@
 <div>
-  <h2>
-    Welcome to Full names.  
-  </h2>
-  <h3>
-  First Name: <input [(ngModel)] = "firstName" />   
-  Last Name: <input [(ngModel)] = "lastName" />
-  <h4>
-  Full Name: {{firstName}} {{lastName}}
-  </h4>
-</h3>
+  <h1> Welcome to WikiGiphy </h1>
+  <h2> Get your Wiki and Giphy</h2>
 </div>
 
-<button (click)="addName()"> ADD NAME </button>
-<button (click)="searchName(firstName, lastName)"> SEARCH FULLNAME </button>
 
-<div *ngIf= showClick>
-  <h3>You clicked me! </h3>
+<form (ngSubmit)="search()">
+<div class = "form-group">
+  <label for="searchInput"> Search </label>
+  <input type="text" class = "form-control" id = "searchInput" 
+          required
+          [(ngModel)]="this.searchInput" name = "searchInput">
+  <button type = "submit" class = "btn btn-success"> Submit</button>
 </div>
-
-<div id = "result"></div>
+</form>
