@@ -1,4 +1,21 @@
-# BusinessCards
+# Wiki-Translate
+
+Things working: 
+
+Firebase login authentication + auth guards
+
+History logging
+
+Wikipedia service 
+
+App Routing Module 
+
+Not working: 
+
+The translate feature.... I did my best, but I couldn't get it to work. 
+
+Since that is the main feature of the project, I'll take whatever you're willing to give me. 
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
 
