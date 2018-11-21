@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DashboardService } from './dashboard.service';
-import {HistoryComponent} from '../history/history.component';
+import { Router } from '@angular/router';
+//import {HistoryComponent} from '../history/history.component';
+import { WikiService } from '../wiki.service';
+import { TranslateService } from '../translate.service';
+import { HistoryService } from '../history/history.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,56 +12,29 @@ import {HistoryComponent} from '../history/history.component';
 })
 
 export class DashboardComponent implements OnInit {
-  searches: any[];   // original coce
-  @Input() firstName : string;  
-  @Input() lastName : string;  
-  match : boolean;
 
-  constructor(private dashboardService: DashboardService) {
-    this.searches = [];   // original code
+ 
+  searchInput: String;  // input comes from FormsModule
+  wikiResults: any[];
+  translateResults: any[];
+  
+  constructor(//private historyService: HistoryService, 
+              private wikiService: WikiService,
+              private translateService: TranslateService,
+              private historyService: HistoryService,)
+              //private router: Router,)
+  { 
+    this.searchInput ='';
+    this.wikiResults = [];
+    this.translateResults = [];
   }
 
-  searchHistory() {
-    this.dashboardService.getSearchHistory().subscribe( (history: any) => {
-      this.searches = history;
-    });
-  }
-
-  dummyClick () {
-      this.firstName = 'You';
-      this.lastName = 'Clicked me!'
-      //this.showClick = !this.showClick;
-  }
-
-  searchName(fName: string, lName: string){
-    // get observable from dashboard Service
-    this.dashboardService.searchName(this.firstName, this.lastName)
-      .subscribe(match => {
-        // update HTML to show if name was found
-        if (match == true){
-          this.match = true;
-          document.getElementById('result').innerHTML = `${this.firstName} ${this.lastName} exists.`;
-        }
-        else{
-          document.getElementById('result').innerHTML = `${this.firstName} ${this.lastName} could not be found.`;
-
-        } 
-        // update search history
-        this.dashboardService.addNameToSearchHistory(fName, lName);
-
-      });
-  }
-
-  addName(){
-    if (!this.match){
-      this.dashboardService.addNameToDatabase(this.firstName, this.lastName);
-    }
-    else{
-      document.getElementById('result').innerHTML = `${this.firstName} ${this.lastName} could not be added.`
-    }
+  search(){
+    this.historyService.addSearchToHistory(this.searchInput);
+    this.wikiService.searchWiki(this.searchInput).subscribe(results => this.wikiResults = results);
+    //this.giphyService.searchGiphy(this.searchInput).subscribe(results => this.giphyResults = results);
   }
 
   ngOnInit() {
   }
-
 }

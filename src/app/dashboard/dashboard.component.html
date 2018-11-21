@@ -1,6 +1,5 @@
 <div>
-  <h1> Welcome to WikiGiphy </h1>
-  <h2> Get your Wiki and Giphy</h2>
+  <h1> Welcome to WikiTranslate </h1>
 </div>
 
 
@@ -13,3 +12,10 @@
   <button type = "submit" class = "btn btn-success"> Submit</button>
 </div>
 </form>
+
+<div *ngIf="wikiResults">
+  <h1> Wiki Results </h1>
+  <div *ngFor="let result of wikiResults">
+    <h3>{{result}}</h3>
+  </div>
+</div>

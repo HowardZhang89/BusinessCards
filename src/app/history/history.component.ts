@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { DashboardService } from '../dashboard/dashboard.service';
+import { HistoryService } from './history.service';
 
 
 @Component({
@@ -12,8 +12,7 @@ export class HistoryComponent implements OnInit {
 
   searchHistory: any[];
   
-  constructor(private dashboardService: DashboardService) { 
-    
+  constructor(private historyService: HistoryService) { 
   }
 
   ngOnInit() {
@@ -21,7 +20,7 @@ export class HistoryComponent implements OnInit {
   }
 
   getSearchHistory(){
-    this.dashboardService.getSearchHistory().subscribe( (history: any) => {
+    this.historyService.getSearchHistory().subscribe((history: any)=>{
       this.searchHistory = history;
     })
   }

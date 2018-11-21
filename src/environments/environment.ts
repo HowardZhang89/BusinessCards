@@ -16,6 +16,8 @@ export const firebaseConfig={
   storageBucket: "csc436-59a7b.appspot.com",
   messagingSenderId: "40811544121"
 };
+
+export const googleApiKey = 'AIzaSyARtH_aKQgaijdy2VklD4bT5KMnSDRPaI8';
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

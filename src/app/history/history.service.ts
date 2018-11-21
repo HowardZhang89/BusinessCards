@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { LoginService } from '../login/login.service';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
+import {formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 import { ReflectionCapabilities } from '@angular/core/src/reflection/reflection_capabilities';
 import { of } from 'rxjs';
 
+@Injectable({
+  providedIn: 'root'
+})
+export class HistoryService {
 
-@Injectable()
-export class DashboardService {
   searchHistoryRef: any;
   tmpArray: any[];
   
@@ -22,11 +24,16 @@ export class DashboardService {
     return this.searchHistoryRef.valueChanges();
   }
 
-  addNameToSearchHistory(fName: string, lName: string){
+  /*addNameToSearchHistory(fName: string, lName: string){
     this.searchHistoryRef.push({firstName: fName, lastName: lName});
   }
+  */
 
-  searchName(fName: string, lName : string){
+  addSearchToHistory(search: String){
+    this.searchHistoryRef.push({text: search});
+  }
+}
+  /*searchName(fName: string, lName : string){
     // create observable that watches if names match
     var refFirst = this.db.object(`names/last-names/${fName}`).snapshotChanges();
     var refLast = this.db.object(`names/last-names/${fName}`).snapshotChanges();
@@ -36,13 +43,10 @@ export class DashboardService {
       })
     );
   }
+  */
 
-  addNameToDatabase(fName: string, lName: string){
+  /*addNameToDatabase(fName: string, lName: string){
     this.db.list('names/first-names').set(fName, true);
     this.db.list('names/last-names').set(lName, true);
   }
-
-  
-
-
-}
+  */
