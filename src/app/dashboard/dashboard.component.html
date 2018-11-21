@@ -13,9 +13,22 @@
 </div>
 </form>
 
-<div *ngIf="wikiResults">
+<section class = "parentContainer">
+
+<div *ngIf="wikiResults" class= "wikiContainer">
   <h1> Wiki Results </h1>
   <div *ngFor="let result of wikiResults">
     <h3>{{result}}</h3>
   </div>
 </div>
+
+<div *ngIf="translateResults" class = "translateContainer">
+    <h1>Translate Results</h1>
+    <img *ngFor = "let result of translateResults" src = "{{result}}">
+  </div>
+
+</section>
+
+
+
+

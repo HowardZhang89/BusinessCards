@@ -1,0 +1,18 @@
+.parentContainer{
+    background: whitesmoke;
+    margin: auto;
+}
+
+.wikiContainer{
+    width: 24%;
+    border: 2px solid black;
+    background-color: aliceblue;
+    float: left;
+}
+
+.translateContainer{
+    width: 75%;
+    border: 2px solid black;
+    background-color: antiquewhite;
+    float: right;
+}

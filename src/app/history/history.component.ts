@@ -10,19 +10,22 @@ import { HistoryService } from './history.service';
 })
 export class HistoryComponent implements OnInit {
 
-  searchHistory: any[];
+  //searchHistory: any;
   
   constructor(private historyService: HistoryService) { 
   }
 
   ngOnInit() {
-    this.getSearchHistory();
+    //this.getSearchHistory();
   }
-
+/*
   getSearchHistory(){
     this.historyService.getSearchHistory().subscribe((history: any)=>{
       this.searchHistory = history;
     })
+    
+   return this.searchHistory;
   }
+*/
 
 }

@@ -11,17 +11,20 @@ import { of } from 'rxjs';
 export class HistoryService {
 
   searchHistoryRef: any;
-  tmpArray: any[];
+  searchHistory: any[];
   
   constructor(
     private loginService: LoginService,
     private db: AngularFireDatabase,
     ){
+      this.searchHistory = [];
       this.searchHistoryRef = this.db.list(`currentSession/${this.loginService.userUid}/searches`);
   }
 
   getSearchHistory() {
-    return this.searchHistoryRef.valueChanges();
+    
+    return this.searchHistory;
+    //return this.searchHistoryRef.valueChanges();
   }
 
   /*addNameToSearchHistory(fName: string, lName: string){
@@ -29,24 +32,13 @@ export class HistoryService {
   }
   */
 
-  addSearchToHistory(search: String){
-    this.searchHistoryRef.push({text: search});
+  addSearchToHistory(query: String){
+    //this.searchHistoryRef.push(query);
+    this.searchHistory.push(query);
+    console.log(query); 
   }
 }
-  /*searchName(fName: string, lName : string){
-    // create observable that watches if names match
-    var refFirst = this.db.object(`names/last-names/${fName}`).snapshotChanges();
-    var refLast = this.db.object(`names/last-names/${fName}`).snapshotChanges();
-    return refFirst.switchMap( fNameMatch => 
-        refLast.switchMap(lNameMatch => {
-          return of((fNameMatch.payload.val() === true) && (lNameMatch.payload.val()===true));
-      })
-    );
-  }
-  */
 
-  /*addNameToDatabase(fName: string, lName: string){
-    this.db.list('names/first-names').set(fName, true);
-    this.db.list('names/last-names').set(lName, true);
-  }
-  */
+
+  
+  
